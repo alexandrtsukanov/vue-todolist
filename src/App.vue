@@ -21,7 +21,7 @@ export default {
             todos: [
                 {id: 1, title: 'Buy bread', completed: false},
                 {id: 2, title: 'Buy milk', completed: false},
-                {id: 2, title: 'Buy water', completed: false},
+                {id: 3, title: 'Buy water', completed: false},
             ]
         }
     },
