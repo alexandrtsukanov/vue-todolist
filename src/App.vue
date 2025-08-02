@@ -1,6 +1,6 @@
 <template>
     <div id="App">
-        <h1>Todo List</h1>
+        <h1>Todo List Application</h1>
         <hr>
         <TodoList 
             v-bind:todos="todos"
