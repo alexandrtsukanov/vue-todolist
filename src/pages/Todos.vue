@@ -9,6 +9,7 @@
             v-bind:todos="todos"
             @remove-todo="removeTodo"
         />
+        <a href="/">Back to home</a>
     </div>
 </template>
 
@@ -18,7 +19,6 @@ import AddTodo from '@/components/AddTodo.vue';
 import {mapTodos} from '@/utils/mapTodos';
 
 export default {
-    name: 'App',
     components: {
         TodoList,
         AddTodo,
@@ -51,3 +51,9 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+    hr {
+        opacity: .3;
+    }
+</style>

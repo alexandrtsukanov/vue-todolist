@@ -53,7 +53,7 @@ export default {
         color: #fff;
         background: red;
         font-weight: bold;
-         border: 1px solid #000;
+        border: 1px solid #000;
     }
 
     .done {
