@@ -1,23 +1,35 @@
 <template>
-  <div id="app">
-    <h1>Header</h1>
-    <hr>
-  </div>
+    <div id="App">
+        <h1>Todo List</h1>
+        <hr>
+        <TodoList 
+            v-bind:todos="todos"
+        />
+    </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
+<script>
+import TodoList from '@/components/TodoList.vue';
 
-@Options({
-  components: {
-
-  },
-})
-export default class App extends Vue {}
+export default {
+    name: 'App',
+    components: {
+        TodoList,
+    },
+    data() {
+        return {
+            todos: [
+                {id: 1, title: 'Buy bread', completed: false},
+                {id: 2, title: 'Buy milk', completed: false},
+                {id: 2, title: 'Buy water', completed: false},
+            ]
+        }
+    },
+}
 </script>
 
 <style>
-#app {
+#App {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

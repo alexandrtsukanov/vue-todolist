@@ -1,6 +1,4 @@
-# guess-rpl-clubs
-
-Угадай клубы РПЛ по буквам
+# vue-todolist
 
 ## Project setup
 ```
