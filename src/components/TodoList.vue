@@ -3,6 +3,7 @@
         <Todo
             v-for:="todo of todos"
             v-bind:todo="todo"
+            v-on:remove-todo="removeTodo"
         />
     </ul>
 </template>
@@ -15,6 +16,11 @@ export default {
         Todo,
     },
     props: ['todos'],
+    methods: {
+        removeTodo(id) {
+            this.$emit('remove-todo', id);
+        },
+    },
 }
 </script>
 

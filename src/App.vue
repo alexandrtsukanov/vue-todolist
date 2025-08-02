@@ -4,9 +4,9 @@
         <hr>
         <TodoList 
             v-bind:todos="todos"
+            @remove-todo="removeTodo"
         />
     </div>
-    
 </template>
 
 <script>
@@ -25,6 +25,11 @@ export default {
                 {id: 3, title: 'Buy water', completed: false},
             ]
         }
+    },
+    methods: {
+        removeTodo(id) {
+            this.todos = this.todos.filter(todo => todo.id !== id);
+        },
     },
 }
 </script>
