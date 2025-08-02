@@ -1,6 +1,10 @@
 <template>
     <li>
-        {{todo.title}}
+        <!-- {{todo.title}} -->
+        <span>
+            <input type="checkbox">
+            {{todo.title}}
+        </span>
     </li>
 </template>
 
