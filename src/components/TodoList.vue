@@ -1,5 +1,4 @@
 <template>
-    <AddTodo/>
     <ul>
         <Todo
             v-for:="(todo, i) of todos"

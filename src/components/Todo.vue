@@ -3,6 +3,7 @@
         <span v-bind:class="{done: todo.completed}">
             <input
                 type="checkbox"
+                v-bind:checked="todo.completed"
                 v-on:change="todo.completed = !todo.completed"
             >
             <strong>{{index + 1}}</strong>
@@ -31,6 +32,10 @@ export default {
 </script>
 
 <style scoped>
+    span {
+        user-select: none;
+    }
+
     li {
         border: 1px solid #ccc;
         display: flex;
