@@ -2,7 +2,7 @@
     <div>
         <button @click="$emit('uppercase')">Uppercase Todos</button>
         <button @click="$emit('reset-uppercase')">Reset Uppercase</button>
-        <select v-model="selectValue" v-on:change="$emit('change-filter', selectValue)">
+        <select v-model="selectValue" v-on:change="onSelect">
             <option value="all">All</option>
             <option value="completed">Completed</option>
             <option value="not completed">Not completed</option>
@@ -23,6 +23,11 @@ export default {
             selectValue: this.filterState,
         }
     },
+    methods: {
+        onSelect() {
+            this.$emit('change-filter', this.selectValue)
+        }
+    }
 }
 </script>
 
