@@ -4,11 +4,17 @@
             @add-todo="addTodo"
             @fetch-todos="fetchTodos"
         />
+        <TodosSettings
+            v-bind:filterState="filterState"
+            v-on:change-filter="changeFilter"
+            @uppercase="uppercaseTodos"
+            @reset-uppercase="resetUppercaseTodos"
+        />
         <hr>
         <Loader v-if="isLoading"/>
         <TodoList
-            v-else-if="todos.length"
-            v-bind:todos="todos"
+            v-else-if="filteredTodos.length"
+            v-bind:todos="filteredTodos"
             @remove-todo="removeTodo"
         />
         <h2 v-else>No Todos</h2>
@@ -20,13 +26,15 @@
 <script>
 import TodoList from '@/components/TodoList.vue';
 import AddTodo from '@/components/AddTodo.vue';
+import TodosSettings from '@/components/TodosSettings.vue';
 import Loader from '@/components/Loader.vue';
-import {mapTodos} from '@/utils/mapTodos';
+import {mapTodos, resetUppercase} from '@/utils';
 
 export default {
     components: {
         TodoList,
         AddTodo,
+        TodosSettings,
         Loader,
     },
     data() {
@@ -37,6 +45,7 @@ export default {
                 {id: 3, title: 'Buy water', completed: false},
             ],
             isLoading: false,
+            filterState: 'all',
         }
     },
     methods: {
@@ -57,6 +66,28 @@ export default {
                     ]
                     this.isLoading = false;
                 })
+        },
+        changeFilter(state) {
+            this.filterState = state;
+        },
+        uppercaseTodos() {
+            this.todos = this.todos.map(todo => ({ ...todo, title: todo.title.toUpperCase() }));
+        },
+        resetUppercaseTodos() {
+            this.todos = this.todos.map(todo => ({ ...todo, title: resetUppercase(todo.title) }));
+        },
+    },
+    computed: {
+        filteredTodos() {
+            if (this.filterState === 'all') {
+                return this.todos;
+            }
+            if (this.filterState === 'completed') {
+                return this.todos.filter(todo => todo.completed);
+            }
+            if (this.filterState === 'not completed') {
+                return this.todos.filter(todo => !todo.completed); 
+            }
         }
     },
 }

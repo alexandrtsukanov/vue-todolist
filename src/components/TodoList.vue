@@ -1,7 +1,7 @@
 <template>
     <ul>
         <Todo
-            v-for:="(todo, i) of todos"
+            v-for:="(todo, i) in todos" :key="todo.id"
             v-bind:todo="todo"
             v-bind:index="i"
             v-on:remove-todo="removeTodo"
