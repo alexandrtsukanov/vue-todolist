@@ -7,12 +7,25 @@
                 v-on:change="todo.completed = !todo.completed"
             >
             <strong>{{index + 1}}</strong>
-            {{todo.title}}
+
+            <span v-if="isEditing">
+                <input type="text" v-model="newTitle">
+                <button @click="onSave">Save</button>
+            </span>
+            <p v-else>{{todo.title}}</p>
         </span>
-        <button
-            class="remove-button"
-            v-on:click="$emit('remove-todo', todo.id)"
-        >&times;</button>
+
+        <span class="action-buttons">
+            <button v-on:click="toggleIsEditing">
+                Edit
+            </button>
+            <button
+                class="remove-button"
+                v-on:click="$emit('remove-todo', todo.id)"
+            >
+                &times;
+            </button>
+        </span>
     </li>
 </template>
 
@@ -28,11 +41,31 @@ export default {
             required: true,
         },
     },
+    data() {
+        return {
+            isEditing: false,
+            newTitle: this.todo.title,
+        }
+    },
+    methods: {
+        toggleIsEditing() {
+            this.isEditing = !this.isEditing;
+        },
+        onSave() {
+            if (this.todo.completed) {
+                return;
+            }
+
+            this.$emit('update-todos', this.todo.id, this.newTitle);
+            this.isEditing = false;
+        }
+    },
 }
 </script>
 
 <style scoped>
     span {
+        width: auto;
         user-select: none;
     }
 
@@ -46,6 +79,15 @@ export default {
 
     input {
         margin-right: 1rem;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 1rem;
     }
 
     .remove-button {

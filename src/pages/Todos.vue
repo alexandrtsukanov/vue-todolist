@@ -16,6 +16,7 @@
             v-else-if="filteredTodos.length"
             v-bind:todos="filteredTodos"
             @remove-todo="removeTodo"
+            @update-todos="updateTodos"
         />
         <h2 v-else>No Todos</h2>
 
@@ -54,6 +55,9 @@ export default {
         },
         addTodo(todo) {
             this.todos.push(todo);
+        },
+        updateTodos(id, newTitle) {
+            this.todos = this.todos.map(todo => todo.id === id ? {...todo, title: newTitle} : todo);
         },
         fetchTodos() {
             this.isLoading = true;

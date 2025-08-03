@@ -5,6 +5,7 @@
             v-bind:todo="todo"
             v-bind:index="i"
             v-on:remove-todo="removeTodo"
+            v-on:update-todos="updateTodos"
         />
     </ul>
 </template>
@@ -20,6 +21,9 @@ export default {
     methods: {
         removeTodo(id) {
             this.$emit('remove-todo', id);
+        },
+        updateTodos(id, newTitle) {
+            this.$emit('update-todos', id, newTitle);
         },
     },
 }
