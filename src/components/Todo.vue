@@ -7,7 +7,6 @@
                 v-on:change="todo.completed = !todo.completed"
             >
             <strong>{{index + 1}}</strong>
-
             <span v-if="isEditing">
                 <input type="text" v-model="newTitle">
                 <button @click="onSave">Save</button>
@@ -65,7 +64,8 @@ export default {
 
 <style scoped>
     span {
-        width: auto;
+        display: flex;
+        gap: .2rem;
         user-select: none;
     }
 
