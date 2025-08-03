@@ -17,11 +17,6 @@
         margin-top: 60px;
     }
 
-    nav {
-        display: flex;
-        gap: 2rem;
-    }
-
     button {
         cursor: pointer;
     }

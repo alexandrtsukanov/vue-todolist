@@ -7,6 +7,6 @@
             Dolorem molestiae optio sunt et, distinctio corrupti unde itaque
             laboriosam accusamus ipsum accusantium qui eos.
         </p>
-        <a href="/todos">Todos</a>
+        <router-link to="/todos">Todos</router-link>
     </div>
 </template>
