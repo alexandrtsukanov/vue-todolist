@@ -16,6 +16,7 @@ export default {
         filterState: {
             type: String,
             required: true,
+            validator: (value) => ['all', 'completed', 'not completed'].includes(value),
         }
     },
     data() {
@@ -25,7 +26,7 @@ export default {
     },
     methods: {
         onSelect() {
-            this.$emit('change-filter', this.selectValue)
+            this.$emit('change-filter', this.selectValue);
         }
     }
 }
