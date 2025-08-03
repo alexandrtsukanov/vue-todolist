@@ -15,7 +15,10 @@
         </span>
 
         <span class="action-buttons">
-            <button v-on:click="toggleIsEditing">
+            <button
+                v-on:click="toggleIsEditing"
+                v-bind:disabled="todo.completed"
+            >
                 Edit
             </button>
             <button
@@ -51,10 +54,6 @@ export default {
             this.isEditing = !this.isEditing;
         },
         onSave() {
-            if (this.todo.completed) {
-                return;
-            }
-
             this.$emit('update-todos', this.todo.id, this.newTitle);
             this.isEditing = false;
         }
